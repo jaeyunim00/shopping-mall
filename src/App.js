@@ -1,13 +1,11 @@
 import MyNavBar from "./MyNavBar";
+import Shoes from "./Shoes";
 import data from "./data";
 
 //Images
 import bg from "./imgs/bg.png";
 
 //Bootstrap
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { useState } from "react";
 
 function App() {
@@ -21,30 +19,17 @@ function App() {
       <div className="main_bg" style={{ backgroundImage: `url(${bg})` }}></div>
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img
-              src="https://codingapple1.github.io/shop/shoes1.jpg"
-              width="80%"
-            />
-            <h4>상품명</h4>
-            <p>설명</p>
-          </div>
-          <div className="col-md-4">
-            <img
-              src="https://codingapple1.github.io/shop/shoes2.jpg"
-              width="80%"
-            />
-            <h4>상품명</h4>
-            <p>상품정보</p>
-          </div>
-          <div className="col-md-4">
-            <img
-              src="https://codingapple1.github.io/shop/shoes3.jpg"
-              width="80%"
-            />
-            <h4>상품명</h4>
-            <p>상품정보</p>
-          </div>
+          {shoes.map((shoe) => {
+            return (
+              <Shoes
+                imgLink={shoe.imgLink}
+                id={shoe.id}
+                title={shoe.title}
+                content={shoe.content}
+                price={shoe.price}
+              ></Shoes>
+            );
+          })}
         </div>
       </div>
     </div>
