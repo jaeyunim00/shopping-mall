@@ -30,7 +30,7 @@ function MyNavBar() {
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate("/detail");
+                navigate("/detail/:id");
               }}
             >
               Detail

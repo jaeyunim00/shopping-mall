@@ -1,7 +1,7 @@
 import MyNavBar from "./components/MyNavBar";
 import Shoes from "./components/Shoes";
 import Detail from "./pages/Detail";
-import Event from "./database/Event";
+import Event from "./pages/Event";
 import data from "./database/data";
 import { Routes, Route, Link } from "react-router-dom";
 
@@ -44,7 +44,10 @@ function App() {
             </>
           }
         ></Route>
-        <Route path="/detail" element={<Detail></Detail>}></Route>
+        <Route
+          path="/detail/:id"
+          element={<Detail shoes={shoes}></Detail>}
+        ></Route>
         <Route path="/event" element={<Event></Event>}>
           <Route
             path="one"
