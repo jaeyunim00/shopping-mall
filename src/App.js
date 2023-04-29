@@ -10,11 +10,14 @@ import axios from "axios";
 import bg from "./imgs/bg.png";
 
 //Bootstrap
-import { useState } from "react";
+import { createContext, useState } from "react";
+
+export let Context1 = createContext(); //context 만들어줌.(state보관함)
 
 function App() {
   const [shoes, setShoes] = useState(data);
   const [loading, setLoading] = useState(true);
+  const [재고] = useState([10, 11, 12]);
   async function handleMoreBtn() {
     setLoading(false);
     await axios
@@ -58,7 +61,11 @@ function App() {
         ></Route>
         <Route
           path="/detail/:id"
-          element={<Detail shoes={shoes}></Detail>}
+          element={
+            <Context1.Provider value={{ 재고, shoes }}>
+              <Detail shoes={shoes}></Detail>
+            </Context1.Provider>
+          }
         ></Route>
         <Route path="/event" element={<Event></Event>}>
           <Route

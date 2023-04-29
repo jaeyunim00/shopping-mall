@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 function Tap({ i }) {
   let [fade, setFade] = useState("");
 
-  useEffect(() => {}, [탭]);
+  // useEffect(() => {}, [탭]);
 
   return [
     <div className="start">

@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Tap from "../components/Tap";
 import { Nav } from "react-bootstrap";
+
+import { Context1 } from "./../App";
+
 function Detail(props) {
   const { id } = useParams();
   const 찾는상품 = props.shoes.find((shoe) => {
@@ -9,6 +12,8 @@ function Detail(props) {
   });
   const [visible, setVisible] = useState("block");
   const [수량, 수량설정] = useState("");
+
+  let { 재고 } = useContext(Context1); //보관함 해체 해줌.
 
   console.log(찾는상품.id);
   useEffect(() => {
@@ -32,6 +37,7 @@ function Detail(props) {
       <div className="alert alert-warning" style={{ display: visible }}>
         2초 이내 구매시 할인
       </div>
+      {재고}
       <div className="row">
         <div className="col-md-6">
           <img
