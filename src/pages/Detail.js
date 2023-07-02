@@ -12,6 +12,7 @@ function Detail(props) {
   });
   const [visible, setVisible] = useState("block");
   const [수량, 수량설정] = useState("");
+  const [탭, 탭변경] = useState(0);
 
   let { 재고 } = useContext(Context1); //보관함 해체 해줌.
 
@@ -65,16 +66,57 @@ function Detail(props) {
 
       <Nav variant="tabs" defaultActiveKey="link0">
         <Nav.Item>
-          <Nav.Link eventKey="link0">버튼0</Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              탭변경(0);
+            }}
+            eventKey="link0"
+          >
+            버튼0
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link1">버튼1</Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              탭변경(1);
+            }}
+            eventKey="link1"
+          >
+            버튼1
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link2">버튼2</Nav.Link>
+          <Nav.Link
+            onClick={() => {
+              탭변경(2);
+            }}
+            eventKey="link2"
+          >
+            버튼2
+          </Nav.Link>
         </Nav.Item>
       </Nav>
-      <Tap></Tap>
+      <TabContent 탭={탭}></TabContent>
+    </div>
+  );
+}
+
+function TabContent({ 탭 }) {
+  let [fade, setFade] = useState("");
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setFade("end");
+    }, 100);
+    return () => {
+      clearTimeout(timer);
+      setFade("");
+    };
+  }, [탭]);
+
+  return (
+    <div className={`start ${fade}`}>
+      {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][탭]}
     </div>
   );
 }
