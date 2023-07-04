@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Tap from "../components/Tap";
 import { Nav } from "react-bootstrap";
-
+import { useDispatch } from "react-redux";
+import { addItem } from "../store/basketSlice";
 import { Context1 } from "./../App";
 
 function Detail(props) {
@@ -16,7 +17,8 @@ function Detail(props) {
 
   let { 재고 } = useContext(Context1); //보관함 해체 해줌.
 
-  console.log(찾는상품.id);
+  let dispatch = useDispatch();
+
   useEffect(() => {
     let a = setTimeout(() => {
       setVisible("none");
@@ -38,7 +40,6 @@ function Detail(props) {
       <div className="alert alert-warning" style={{ display: visible }}>
         2초 이내 구매시 할인
       </div>
-      {재고}
       <div className="row">
         <div className="col-md-6">
           <img
@@ -60,7 +61,14 @@ function Detail(props) {
           <h4 className="pt-5">{찾는상품.title}</h4>
           <p>{찾는상품.content}</p>
           <p>{찾는상품.price}</p>
-          <button className="btn btn-danger">주문하기</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              dispatch(addItem({ id: 3, name: "red knit", count: 1 }));
+            }}
+          >
+            주문하기
+          </button>
         </div>
       </div>
 

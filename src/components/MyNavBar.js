@@ -30,6 +30,13 @@ function MyNavBar() {
             </Nav.Link>
             <Nav.Link
               onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              Cart
+            </Nav.Link>
+            <Nav.Link
+              onClick={() => {
                 navigate("/detail/:id");
               }}
             >
