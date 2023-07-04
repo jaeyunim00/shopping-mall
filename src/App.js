@@ -5,6 +5,7 @@ import Event from "./pages/Event";
 import data from "./database/data";
 import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
+import Cart from "./components/Cart";
 
 //Images
 import bg from "./imgs/bg.png";
@@ -74,6 +75,7 @@ function App() {
           ></Route>
           <Route path="two" element={<div>생일 기념 쿠폰 받기!</div>}></Route>
         </Route>
+        <Route path="/cart" element={<Cart></Cart>}></Route>
       </Routes>
     </div>
   );
