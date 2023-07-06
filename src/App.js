@@ -11,11 +11,18 @@ import Cart from "./components/Cart";
 import bg from "./imgs/bg.png";
 
 //Bootstrap
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export let Context1 = createContext(); //context 만들어줌.(state보관함)
 
 function App() {
+  useEffect(() => {
+    if (localStorage.getItem("watched")) {
+    } else {
+      localStorage.setItem("watched", JSON.stringify([]));
+    }
+  }, []);
+
   const [shoes, setShoes] = useState(data);
   const [loading, setLoading] = useState(true);
   const [재고] = useState([10, 11, 12]);
